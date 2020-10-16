@@ -1,6 +1,14 @@
 import React, { Component } from "react";
-import { Text, View, StyleSheet, Image } from "react-native";
-import { Header, List, ListItem, Input } from "native-base";
+import {
+  Text,
+  View,
+  StyleSheet,
+  Image,
+  Modal,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+} from "react-native";
+import { Header, List, ListItem, Input, Content } from "native-base";
 import IconAntDesign from "react-native-vector-icons/AntDesign";
 import { SearchBar } from "react-native-elements";
 
@@ -8,6 +16,13 @@ export default class SearchScreen extends Component {
   state = {
     search: "",
     flag: "",
+
+    countryData: true,
+    searchDataOpen: false,
+  };
+
+  showCountrySearch = () => {
+    this.setState({ searchDataOpen: !this.state.searchDataOpen });
   };
 
   updateSearch = (search) => {
@@ -24,225 +39,303 @@ export default class SearchScreen extends Component {
       });
   };
 
+  modalHandler = () => {
+    this.setState({
+      searchDataOpen: false,
+    });
+  };
+
   render() {
     const { search } = this.state;
-    return (
-      <View
-        style={{
-          flex: 1,
-          backgroundColor: "#fbf7f0",
-          justifyContent: "top",
-          alignItems: "center",
-        }}
-      >
-        <Header style={{ backgroundColor: "white" }}>
-          <SearchBar
-            platform="ios"
-            placeholder="Search Country"
-            onChangeText={this.updateSearch}
-            onSubmitEditing={({ nativeEvent }) => console.log(nativeEvent.text)}
-            value={search}
-          />
-        </Header>
-        <View
-          style={{
-            width: "90%",
-            height: "14%",
-            backgroundColor: "transparent",
-          }}
-        >
-          <List>
-            <ListItem noBorder>
-              <Image style={styles.stretch} source={{ uri: this.state.flag }} />
-              <Text
-                style={{ fontWeight: "bold", fontSize: 25, paddingLeft: "10%" }}
-              >
-                {this.state.search.country}
-              </Text>
-            </ListItem>
-          </List>
-        </View>
 
+    if (this.state.searchDataOpen) {
+      return (
         <View
           style={{
-            paddingRight: "75%",
-            paddingTop: "2%",
-            marginTop: "0%",
+            flex: 1,
+            backgroundColor: "#fbf7f0",
+            justifyContent: "top",
+            alignItems: "center",
           }}
         >
-          <List>
-            <ListItem borderBottomColor="grey">
-              <Text
-                style={{
-                  fontWeight: "bold",
-                  fontSize: 15,
-                  color: "purple",
-                }}
-              >
-                Today
-              </Text>
-            </ListItem>
-          </List>
-        </View>
-        <View style={styles.box}>
-          <View style={{ backgroundColor: "white", borderRadius: "18" }}>
-            <View style={{ margin: "2%" }}>
-              <List>
-                <ListItem style={{ paddingBottom: "3%" }}>
-                  <IconAntDesign
-                    name="Safety"
-                    size={20}
-                    style={{ paddingLeft: "30%" }}
-                    color="blue"
-                  />
-                  <Text style={{ paddingLeft: "5%", fontWeight: "bold" }}>
-                    {search.todayCases} {"\n"}
-                    <Text style={styles.textStyle}>Total Cases</Text>
-                  </Text>
-                </ListItem>
-                <ListItem noBorder style={{ paddingBottom: "3%" }}>
-                  <IconAntDesign name="smile-circle" size={20} color="green" />
-                  <Text style={{ paddingLeft: "5%", fontWeight: "bold" }}>
-                    {search.todayRecovered} {"\n"}
-                    <Text style={styles.textStyle}>Recovered</Text>
-                  </Text>
-                  <IconAntDesign
-                    style={{ paddingLeft: "20%" }}
-                    name="frown"
-                    size={20}
-                    color="red"
-                  />
-                  <Text style={{ paddingLeft: "5%", fontWeight: "bold" }}>
-                    {search.todayDeaths} {"\n"}
-                    <Text style={styles.textStyle}>Deaths</Text>
-                  </Text>
-                </ListItem>
-              </List>
-            </View>
-          </View>
-        </View>
-
-        <View
-          style={{
-            paddingRight: "75%",
-            paddingTop: "0%",
-          }}
-        >
-          <List>
-            <ListItem borderBottomColor="grey">
-              <Text
-                style={{
-                  fontWeight: "bold",
-                  fontSize: 15,
-                  color: "purple",
-                }}
-              >
-                Overall
-              </Text>
-            </ListItem>
-          </List>
-        </View>
-        <View
-          style={{
-            width: "85%",
-            height: "10%",
-            paddingTop: "2%",
-            shadowOpacity: 0.2,
-            shadowRadius: 15,
-          }}
-        >
-          <View style={{ backgroundColor: "white", borderRadius: "18" }}>
-            <View style={{ margin: "2%" }}>
-              <List>
-                <ListItem noBorder style={{ paddingBottom: "1%" }}>
-                  <IconAntDesign name="barschart" size={20} color="orange" />
-                  <Text style={{ paddingLeft: "5%", fontWeight: "bold" }}>
-                    {search.tests} {"\n"}
-                    <Text style={styles.textStyle}>Total Tests</Text>
-                  </Text>
-                </ListItem>
-              </List>
-            </View>
-          </View>
-        </View>
-        <View
-          style={{
-            width: "85%",
-            height: "20%",
-            paddingTop: "2%",
-            shadowOpacity: 0.2,
-            shadowRadius: 15,
-          }}
-        >
-          <View style={{ backgroundColor: "white", borderRadius: "18" }}>
-            <View style={{ margin: "2%" }}>
-              <List>
-                <ListItem style={{ paddingBottom: "3%" }}>
-                  <IconAntDesign
-                    name="star"
-                    size={20}
-                    style={{ paddingLeft: "30%" }}
-                    color="purple"
-                  />
-                  <Text style={{ paddingLeft: "5%", fontWeight: "bold" }}>
-                    {search.cases} {"\n"}
-                    <Text style={styles.textStyle}>Total Cases</Text>
-                  </Text>
-                </ListItem>
-                <ListItem noBorder style={{ paddingBottom: "3%" }}>
-                  <IconAntDesign name="smile-circle" size={20} color="green" />
-                  <Text style={{ paddingLeft: "5%", fontWeight: "bold" }}>
-                    {search.recovered} {"\n"}
-                    <Text style={styles.textStyle}>Recovered</Text>
-                  </Text>
-                  <IconAntDesign
-                    style={{ paddingLeft: "20%" }}
-                    name="frown"
-                    size={20}
-                    color="red"
-                  />
-                  <Text style={{ paddingLeft: "5%", fontWeight: "bold" }}>
-                    {search.deaths} {"\n"}
-                    <Text style={styles.textStyle}>Deaths</Text>
-                  </Text>
-                </ListItem>
-              </List>
-            </View>
-          </View>
-        </View>
-
-        <View
-          style={
-            ({ width: "100%", height: "13%", paddingTop: "0%" },
-            styles.sideBorder)
-          }
-        >
+          <Header style={{ backgroundColor: "white" }}>
+            <SearchBar
+              platform="ios"
+              placeholder="Search Country"
+              onChangeText={this.updateSearch}
+              onSubmitEditing={({ nativeEvent }) =>
+                console.log(nativeEvent.text)
+              }
+              value={search}
+              onClear={this.showCountrySearch}
+            />
+          </Header>
           <View
             style={{
-              backgroundColor: "white",
-              borderRadius: "18",
+              width: "90%",
+              height: "14%",
+              backgroundColor: "transparent",
             }}
           >
-            <View style={{ margin: "2%" }}>
-              <List>
-                <ListItem noBorder style={{ paddingBottom: "1%" }}>
-                  <IconAntDesign
-                    name="exclamationcircle"
-                    size={20}
-                    color="orange"
-                    style={{ paddingLeft: "2%", paddingRight: "3%" }}
-                  />
+            <List>
+              <ListItem noBorder>
+                <Image
+                  style={styles.stretch}
+                  source={{ uri: this.state.flag }}
+                />
+                <Text
+                  style={{
+                    fontWeight: "bold",
+                    fontSize: 25,
+                    paddingLeft: "10%",
+                  }}
+                >
+                  {this.state.search.country}
+                </Text>
+              </ListItem>
+            </List>
+          </View>
 
-                  <Text style={{ fontWeight: "bold", color: "green" }}>
-                    Active Cases &nbsp; : &nbsp; {search.active}
-                  </Text>
-                </ListItem>
-              </List>
+          <View
+            style={{
+              paddingRight: "75%",
+              paddingTop: "2%",
+              marginTop: "0%",
+            }}
+          >
+            <List>
+              <ListItem borderBottomColor="grey">
+                <Text
+                  style={{
+                    fontWeight: "bold",
+                    fontSize: 15,
+                    color: "purple",
+                  }}
+                >
+                  Today
+                </Text>
+              </ListItem>
+            </List>
+          </View>
+          <View style={styles.box}>
+            <View style={{ backgroundColor: "white", borderRadius: "18" }}>
+              <View style={{ margin: "2%" }}>
+                <List>
+                  <ListItem style={{ paddingBottom: "3%" }}>
+                    <IconAntDesign
+                      name="Safety"
+                      size={20}
+                      style={{ paddingLeft: "30%" }}
+                      color="blue"
+                    />
+                    <Text style={{ paddingLeft: "5%", fontWeight: "bold" }}>
+                      {search.todayCases} {"\n"}
+                      <Text style={styles.textStyle}>Total Cases</Text>
+                    </Text>
+                  </ListItem>
+                  <ListItem noBorder style={{ paddingBottom: "3%" }}>
+                    <IconAntDesign
+                      name="smile-circle"
+                      size={20}
+                      color="green"
+                    />
+                    <Text style={{ paddingLeft: "5%", fontWeight: "bold" }}>
+                      {search.todayRecovered} {"\n"}
+                      <Text style={styles.textStyle}>Recovered</Text>
+                    </Text>
+                    <IconAntDesign
+                      style={{ paddingLeft: "20%" }}
+                      name="frown"
+                      size={20}
+                      color="red"
+                    />
+                    <Text style={{ paddingLeft: "5%", fontWeight: "bold" }}>
+                      {search.todayDeaths} {"\n"}
+                      <Text style={styles.textStyle}>Deaths</Text>
+                    </Text>
+                  </ListItem>
+                </List>
+              </View>
+            </View>
+          </View>
+
+          <View
+            style={{
+              paddingRight: "75%",
+              paddingTop: "0%",
+            }}
+          >
+            <List>
+              <ListItem borderBottomColor="grey">
+                <Text
+                  style={{
+                    fontWeight: "bold",
+                    fontSize: 15,
+                    color: "purple",
+                  }}
+                >
+                  Overall
+                </Text>
+              </ListItem>
+            </List>
+          </View>
+          <View
+            style={{
+              width: "85%",
+              height: "10%",
+              paddingTop: "2%",
+              shadowOpacity: 0.2,
+              shadowRadius: 15,
+            }}
+          >
+            <View style={{ backgroundColor: "white", borderRadius: "18" }}>
+              <View style={{ margin: "2%" }}>
+                <List>
+                  <ListItem noBorder style={{ paddingBottom: "1%" }}>
+                    <IconAntDesign name="barschart" size={20} color="orange" />
+                    <Text style={{ paddingLeft: "5%", fontWeight: "bold" }}>
+                      {search.tests} {"\n"}
+                      <Text style={styles.textStyle}>Total Tests</Text>
+                    </Text>
+                  </ListItem>
+                </List>
+              </View>
+            </View>
+          </View>
+          <View
+            style={{
+              width: "85%",
+              height: "20%",
+              paddingTop: "2%",
+              shadowOpacity: 0.2,
+              shadowRadius: 15,
+            }}
+          >
+            <View style={{ backgroundColor: "white", borderRadius: "18" }}>
+              <View style={{ margin: "2%" }}>
+                <List>
+                  <ListItem style={{ paddingBottom: "3%" }}>
+                    <IconAntDesign
+                      name="star"
+                      size={20}
+                      style={{ paddingLeft: "30%" }}
+                      color="purple"
+                    />
+                    <Text style={{ paddingLeft: "5%", fontWeight: "bold" }}>
+                      {search.cases} {"\n"}
+                      <Text style={styles.textStyle}>Total Cases</Text>
+                    </Text>
+                  </ListItem>
+                  <ListItem noBorder style={{ paddingBottom: "3%" }}>
+                    <IconAntDesign
+                      name="smile-circle"
+                      size={20}
+                      color="green"
+                    />
+                    <Text style={{ paddingLeft: "5%", fontWeight: "bold" }}>
+                      {search.recovered} {"\n"}
+                      <Text style={styles.textStyle}>Recovered</Text>
+                    </Text>
+                    <IconAntDesign
+                      style={{ paddingLeft: "20%" }}
+                      name="frown"
+                      size={20}
+                      color="red"
+                    />
+                    <Text style={{ paddingLeft: "5%", fontWeight: "bold" }}>
+                      {search.deaths} {"\n"}
+                      <Text style={styles.textStyle}>Deaths</Text>
+                    </Text>
+                  </ListItem>
+                </List>
+              </View>
+            </View>
+          </View>
+
+          <View
+            style={
+              ({ width: "100%", height: "13%", paddingTop: "0%" },
+              styles.sideBorder)
+            }
+          >
+            <View
+              style={{
+                backgroundColor: "white",
+                borderRadius: "18",
+              }}
+            >
+              <View style={{ margin: "2%" }}>
+                <List>
+                  <ListItem noBorder style={{ paddingBottom: "1%" }}>
+                    <IconAntDesign
+                      name="exclamationcircle"
+                      size={20}
+                      color="orange"
+                      style={{ paddingLeft: "2%", paddingRight: "3%" }}
+                    />
+
+                    <Text style={{ fontWeight: "bold", color: "green" }}>
+                      Active Cases &nbsp; : &nbsp; {search.active}
+                    </Text>
+                  </ListItem>
+                </List>
+              </View>
             </View>
           </View>
         </View>
-      </View>
-    );
+      );
+    } else {
+      return (
+        <View
+          style={{
+            flex: 1,
+            backgroundColor: "#fbf7f0",
+            justifyContent: "top",
+            alignItems: "center",
+          }}
+        >
+          <Header style={{ backgroundColor: "white" }}>
+            <SearchBar
+              platform="ios"
+              placeholder="Search Country"
+              onChangeText={this.updateSearch}
+              onSubmitEditing={({ nativeEvent }) =>
+                console.log(nativeEvent.text)
+              }
+              value={search}
+              onFocus={this.showCountrySearch}
+            />
+          </Header>
+          <View
+            style={{
+              width: "100%",
+              height: "87%",
+              backgroundColor: "transparent",
+              alignContent: "center",
+              justifyContent: "center",
+            }}
+          >
+            <IconAntDesign
+              name="search1"
+              size={120}
+              color="silver"
+              style={{ paddingLeft: "30%", marginBottom: "10%" }}
+            ></IconAntDesign>
+
+            <Text
+              style={{
+                paddingLeft: "10%",
+                color: "silver",
+                fontSize: 15,
+                fontWeight: "bold",
+              }}
+            >
+              Search Country To See The Covid-19 Stats
+            </Text>
+          </View>
+        </View>
+      );
+    }
   }
 }
 
