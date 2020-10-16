@@ -1,22 +1,9 @@
 import React from "react";
-import {
-  Text,
-  View,
-  ScrollView,
-  Image,
-  StyleSheet,
-  ActivityIndicator,
-  TouchableOpacity,
-} from "react-native";
-import { Card, Button, Icon, Badge } from "react-native-elements";
+import { Text, View, Image, StyleSheet } from "react-native";
 import { List, ListItem } from "native-base";
 import IconAntDesign from "react-native-vector-icons/AntDesign";
 
 import { Component } from "react";
-import {
-  TouchableHighlight,
-  TouchableWithoutFeedback,
-} from "react-native-gesture-handler";
 
 export default class MainPage extends Component {
   state = {

@@ -1,11 +1,11 @@
 import * as React from "react";
-import { Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import MainPage from "./MainPage";
 import SearchScreen from "./SearchScreen";
 import Districts from "./Districts";
+import About from "./About";
 
 import { Component } from "react";
 
@@ -23,12 +23,10 @@ export default class Home extends Component {
                 iconName = focused
                   ? "ios-information-circle"
                   : "ios-information-circle-outline";
-              } else if (route.name === "Settings") {
-                iconName = focused ? "ios-settings" : "ios-settings";
               } else if (route.name === "Search") {
                 iconName = focused ? "ios-search" : "ios-search";
-              } else if (route.name === "About Us") {
-                iconName = focused ? "ios-search-box" : "ios-search-box";
+              } else if (route.name === "AboutUs") {
+                iconName = focused ? "ios-person" : "ios-person";
               } else if (route.name === "Districts") {
                 iconName = focused ? "ios-list-box" : "ios-list";
               }
@@ -45,8 +43,7 @@ export default class Home extends Component {
           <Tab.Screen name="Main" component={MainPage} />
           <Tab.Screen name="Districts" component={Districts} />
           <Tab.Screen name="Search" component={SearchScreen} />
-          {/* <Tab.Screen name="Settings" component={SearchScreen} /> */}
-          {/* <Tab.Screen name="About Us" component={SearchScreen} /> */}
+          <Tab.Screen name="AboutUs" component={About} />
         </Tab.Navigator>
       </NavigationContainer>
     );

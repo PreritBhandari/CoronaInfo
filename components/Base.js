@@ -1,14 +1,8 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import {
-  StyleSheet,
-  Text,
-  Button,
-  Image,
-  View,
-  SafeAreaView,
-} from "react-native";
-import { color } from "react-native-reanimated";
+import { StyleSheet, Text, Image, SafeAreaView } from "react-native";
+import IconAntDesign from "react-native-vector-icons/AntDesign";
+import { View } from "native-base";
 
 export default function Base({ navigation }) {
   return (
@@ -18,11 +12,29 @@ export default function Base({ navigation }) {
         style={styles.image}
         source={require("../assets/CoronaInfo.png")}
       />
-      <Button
-        color="red"
-        title="Confirm"
+
+      <Text
+        style={{
+          fontSize: 25,
+          fontWeight: "bold",
+          color: "purple",
+        }}
         onPress={() => navigation.navigate("Home")}
-      />
+      >
+        Start
+        <IconAntDesign name="caretright" size={25}></IconAntDesign>
+      </Text>
+      <Text
+        style={{
+          fontSize: 10,
+          fontWeight: "bold",
+          color: "black",
+          paddingTop: "60%",
+        }}
+      >
+        * Internet Connection Is Required To Run The Application
+      </Text>
+
       <StatusBar style="auto" />
     </SafeAreaView>
   );
@@ -31,11 +43,11 @@ export default function Base({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "white",
+    backgroundColor: "#fbf7e0",
     alignItems: "center",
     justifyContent: "center",
   },
   image: {
-    marginBottom: 60 + "%",
+    marginBottom: 50 + "%",
   },
 });

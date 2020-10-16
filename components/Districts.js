@@ -175,7 +175,7 @@ export default class Districts extends Component {
                               <Text
                                 style={{
                                   fontWeight: "bold",
-                                  color: "red",
+                                  color: "purple",
                                   fontSize: "20",
                                 }}
                               >
@@ -281,7 +281,7 @@ export default class Districts extends Component {
                             <ListItem noBorder style={{ paddingBottom: "2%" }}>
                               <Button
                                 title="OK"
-                                color="red"
+                                color="purple"
                                 onPress={() => this.modalHandler()}
                               ></Button>
                             </ListItem>

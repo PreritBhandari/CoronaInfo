@@ -1,13 +1,5 @@
 import React, { Component } from "react";
-import {
-  Text,
-  View,
-  StyleSheet,
-  Image,
-  Modal,
-  TouchableOpacity,
-  TouchableWithoutFeedback,
-} from "react-native";
+import { Text, View, StyleSheet, Image } from "react-native";
 import { Header, List, ListItem, Input, Content } from "native-base";
 import IconAntDesign from "react-native-vector-icons/AntDesign";
 import { SearchBar } from "react-native-elements";
@@ -68,6 +60,7 @@ export default class SearchScreen extends Component {
               }
               value={search}
               onClear={this.showCountrySearch}
+              onCancel={this.showCountrySearch}
             />
           </Header>
           <View
