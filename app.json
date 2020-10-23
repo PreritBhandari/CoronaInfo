@@ -1,26 +1,21 @@
 {
   "expo": {
-    "name": "FirstNativeProject",
-    "slug": "FirstNativeProject",
+    "name": "CoronaStats",
+    "slug": "coronastatsv1",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
-    "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
+    "icon": "./assets/appicon.png",
     "updates": {
       "fallbackToCacheTimeout": 0
     },
     "assetBundlePatterns": [
       "**/*"
     ],
-    "ios": {
-      "supportsTablet": true
+    "android": {
+      "package": "com.preritbhandari.coronastats",
+      "versionCode": 1
     },
-    "web": {
-      "favicon": "./assets/favicon.png"
-    }
+    "description": "Find The Corona Details of Nepal , your respective districts and of whole world with a single App. Feel free to contact me incase of any issues .\n\n-Prerit Bhandari",
+    "githubUrl": "https://github.com/PreritBhandari/CoronaInfo/tree/master"
   }
 }

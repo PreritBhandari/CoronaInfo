@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.41,
     shadowRadius: 15,
 
-    // elevation: 14,
+//     elevation: 14,
   },
 
   inner: {
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.4,
     shadowRadius: 6,
 
-    // elevation: 14,
+//     elevation: 14,
   },
 });
 
@@ -93,6 +93,7 @@ export default class Districts extends Component {
 
       districtName: title,
     });
+
     return fetch(`https://data.nepalcorona.info/api/v1/districts/${title}`)
       .then((res) => res.json())
       .then((resJson) => {
@@ -100,6 +101,9 @@ export default class Districts extends Component {
           districtDetail: resJson.covid_summary,
         });
         console.log(this.state.districtDetail);
+      })
+      .catch((error) => {
+        console.log(error);
       });
   };
 
@@ -165,7 +169,7 @@ export default class Districts extends Component {
                       <View
                         style={{
                           backgroundColor: "white",
-                          borderRadius: "40",
+                          borderRadius: 40,
                           marginBottom: "10%",
                         }}
                       >
@@ -176,7 +180,7 @@ export default class Districts extends Component {
                                 style={{
                                   fontWeight: "bold",
                                   color: "purple",
-                                  fontSize: "20",
+                                  fontSize: 20,
                                 }}
                               >
                                 {this.state.districtName}
@@ -272,7 +276,7 @@ export default class Districts extends Component {
                       <View
                         style={{
                           backgroundColor: "white",
-                          borderRadius: "90",
+                          borderRadius: 90,
                           marginTop: "5%",
                         }}
                       >

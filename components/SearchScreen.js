@@ -46,7 +46,7 @@ export default class SearchScreen extends Component {
           style={{
             flex: 1,
             backgroundColor: "#fbf7f0",
-            justifyContent: "top",
+//            justifyContent: "top",
             alignItems: "center",
           }}
         >
@@ -111,7 +111,7 @@ export default class SearchScreen extends Component {
             </List>
           </View>
           <View style={styles.box}>
-            <View style={{ backgroundColor: "white", borderRadius: "18" }}>
+            <View style={{ backgroundColor: "white", borderRadius: 18 }}>
               <View style={{ margin: "2%" }}>
                 <List>
                   <ListItem style={{ paddingBottom: "3%" }}>
@@ -181,7 +181,7 @@ export default class SearchScreen extends Component {
               shadowRadius: 15,
             }}
           >
-            <View style={{ backgroundColor: "white", borderRadius: "18" }}>
+            <View style={{ backgroundColor: "white", borderRadius: 18 }}>
               <View style={{ margin: "2%" }}>
                 <List>
                   <ListItem noBorder style={{ paddingBottom: "1%" }}>
@@ -204,7 +204,7 @@ export default class SearchScreen extends Component {
               shadowRadius: 15,
             }}
           >
-            <View style={{ backgroundColor: "white", borderRadius: "18" }}>
+            <View style={{ backgroundColor: "white", borderRadius: 18 }}>
               <View style={{ margin: "2%" }}>
                 <List>
                   <ListItem style={{ paddingBottom: "3%" }}>
@@ -254,7 +254,7 @@ export default class SearchScreen extends Component {
             <View
               style={{
                 backgroundColor: "white",
-                borderRadius: "18",
+                borderRadius: 18,
               }}
             >
               <View style={{ margin: "2%" }}>
@@ -283,7 +283,7 @@ export default class SearchScreen extends Component {
           style={{
             flex: 1,
             backgroundColor: "#fbf7f0",
-            justifyContent: "top",
+//            justifyContent: "top",
             alignItems: "center",
           }}
         >

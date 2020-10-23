@@ -16,7 +16,7 @@ export default class About extends Component {
         style={{
           flex: 1,
           backgroundColor: "#fbf7f0",
-          justifyContent: "top",
+//          justifyContent: "top",
           alignItems: "center",
         }}
       >

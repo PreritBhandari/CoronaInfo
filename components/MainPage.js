@@ -27,8 +27,8 @@ export default class MainPage extends Component {
         style={{
           flex: 1,
           backgroundColor: "#fbf7f0",
-          justifyContent: "top",
           alignItems: "center",
+//          justifyContent: "top",
         }}
       >
         <View
@@ -46,7 +46,7 @@ export default class MainPage extends Component {
               marginTop: 6 + "%",
               color: "purple",
               fontWeight: "bold",
-              fontSize: "17",
+              fontSize: 17,
             }}
           >
             <Image source={require("../assets/nepal.png")} />
@@ -139,7 +139,7 @@ export default class MainPage extends Component {
             shadowRadius: 15,
           }}
         >
-          <View style={{ backgroundColor: "white", borderRadius: "18" }}>
+          <View style={{ backgroundColor: "white", borderRadius: 18 }}>
             <View style={{ margin: "2%" }}>
               <List>
                 <ListItem noBorder style={{ paddingBottom: "1%" }}>
@@ -162,7 +162,7 @@ export default class MainPage extends Component {
             shadowRadius: 15,
           }}
         >
-          <View style={{ backgroundColor: "white", borderRadius: "18" }}>
+          <View style={{ backgroundColor: "white", borderRadius: 18 }}>
             <View style={{ margin: "2%" }}>
               <List>
                 <ListItem style={{ paddingBottom: "3%" }}>
@@ -208,7 +208,7 @@ export default class MainPage extends Component {
           <View
             style={{
               backgroundColor: "white",
-              borderRadius: "18",
+              borderRadius: 18,
             }}
           >
             <View style={{ margin: "2%" }}>
