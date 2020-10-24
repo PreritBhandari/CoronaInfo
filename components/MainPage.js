@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, Image, StyleSheet } from "react-native";
+import { Text, View,ScrollView, Image, StyleSheet } from "react-native";
 import { List, ListItem } from "native-base";
 import IconAntDesign from "react-native-vector-icons/AntDesign";
 
@@ -55,10 +55,13 @@ export default class MainPage extends Component {
           </Text>
         </View>
 
+      <ScrollView style={{flex:1}}>
+
         <View
           style={{
             paddingRight: "75%",
             paddingTop: "2%",
+
           }}
         >
           <List>
@@ -113,7 +116,7 @@ export default class MainPage extends Component {
         <View
           style={{
             paddingRight: "75%",
-            paddingTop: "2%",
+            paddingTop: "5%",
           }}
         >
           <List>
@@ -133,8 +136,9 @@ export default class MainPage extends Component {
         <View
           style={{
             width: "85%",
-            height: "10%",
+            height: "13%",
             paddingTop: "2%",
+            paddingLeft:'5%',
             shadowOpacity: 0.2,
             shadowRadius: 15,
           }}
@@ -157,7 +161,8 @@ export default class MainPage extends Component {
           style={{
             width: "85%",
             height: "20%",
-            paddingTop: "2%",
+            paddingTop: "5%",
+            paddingLeft:'5%',
             shadowOpacity: 0.2,
             shadowRadius: 15,
           }}
@@ -199,10 +204,12 @@ export default class MainPage extends Component {
           </View>
         </View>
 
+
+
         <View
           style={
-            ({ width: "100%", height: "13%", paddingTop: "0%" },
-            styles.sideBorder)
+            ({ width: "100%", height: "13%", marginTop: "12%" ,paddingLeft:'10%',paddingRight:'19%'}
+            )
           }
         >
           <View
@@ -229,6 +236,7 @@ export default class MainPage extends Component {
             </View>
           </View>
         </View>
+      </ScrollView>
       </View>
     );
   }
@@ -247,6 +255,7 @@ const styles = StyleSheet.create({
     width: "95%",
     height: "33%",
     padding: 8,
+    paddingLeft:'5%',
     shadowColor: "#000",
     shadowOffset: {
       width: 0,

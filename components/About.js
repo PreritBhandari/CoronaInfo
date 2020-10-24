@@ -21,24 +21,35 @@ export default class About extends Component {
         }}
       >
         <Container style={styles.container}>
-          <Header style={{ backgroundColor: "white" }}>
-            <Text
-              style={{
-                paddingTop: "7%",
-                color: "purple",
-                fontWeight: "bold",
-                fontSize: 17,
-              }}
-            >
-              About Us
-            </Text>
-          </Header>
+          <View
+                    style={{
+                      width: 100 + "%",
+                      height: 15 + "%",
+                      backgroundColor: "white",
+                      alignContent: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <Text
+                      style={{
+                        alignContent:'center',
+                        justifyContent:'center',
+                        marginLeft:'40%',
+                        marginTop: 6 + "%",
+                        color: "purple",
+                        fontWeight: "bold",
+                        fontSize: 19,
+                      }}
+                    >
+                            About Us
+                    </Text>
+          </View>
+          <View style={{justifyContent:'center',alignItems:'center'}}>
           <Image
             style={{
               height: 200,
               width: 200,
               marginTop: "40%",
-              marginLeft: "20%",
             }}
             source={require("../assets/developedby.png")}
           ></Image>
@@ -46,7 +57,7 @@ export default class About extends Component {
             style={{
               height: 50,
               width: 200,
-              marginLeft: "20%",
+
             }}
             source={require("../assets/prerit.png")}
           ></Image>
@@ -54,13 +65,14 @@ export default class About extends Component {
             style={{
               fontSize: 12,
               fontWeight: "bold",
-              paddingLeft: "23%",
-              marginTop: "50%",
               color: "#595F5C",
+              marginTop:'20%'
+
             }}
           >
             Feel Free to Contact For any Issues !
           </Text>
+          </View>
         </Container>
       </View>
     );

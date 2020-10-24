@@ -29,7 +29,7 @@ export default function Base({ navigation }) {
           fontSize: 10,
           fontWeight: "bold",
           color: "black",
-          paddingTop: "60%",
+          paddingTop: "40%",
         }}
       >
         * Internet Connection Is Required To Run The Application

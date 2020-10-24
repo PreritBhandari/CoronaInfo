@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Text, View, StyleSheet, Image } from "react-native";
+import { Text, View,ScrollView, StyleSheet, Image } from "react-native";
 import { Header, List, ListItem, Input, Content } from "native-base";
 import IconAntDesign from "react-native-vector-icons/AntDesign";
 import { SearchBar } from "react-native-elements";
@@ -48,6 +48,7 @@ export default class SearchScreen extends Component {
             backgroundColor: "#fbf7f0",
 //            justifyContent: "top",
             alignItems: "center",
+
           }}
         >
           <Header style={{ backgroundColor: "white" }}>
@@ -63,6 +64,7 @@ export default class SearchScreen extends Component {
               onCancel={this.showCountrySearch}
             />
           </Header>
+        <ScrollView style={{flex:1}}>
           <View
             style={{
               width: "90%",
@@ -179,6 +181,9 @@ export default class SearchScreen extends Component {
               paddingTop: "2%",
               shadowOpacity: 0.2,
               shadowRadius: 15,
+              flex:1,
+                            paddingLeft:'3%'
+
             }}
           >
             <View style={{ backgroundColor: "white", borderRadius: 18 }}>
@@ -199,9 +204,12 @@ export default class SearchScreen extends Component {
             style={{
               width: "85%",
               height: "20%",
-              paddingTop: "2%",
+            paddingTop: "10%",
               shadowOpacity: 0.2,
               shadowRadius: 15,
+              flex:1,
+              paddingLeft:'3%'
+
             }}
           >
             <View style={{ backgroundColor: "white", borderRadius: 18 }}>
@@ -246,17 +254,17 @@ export default class SearchScreen extends Component {
           </View>
 
           <View
-            style={
-              ({ width: "100%", height: "13%", paddingTop: "0%" },
-              styles.sideBorder)
-            }
-          >
-            <View
-              style={{
-                backgroundColor: "white",
-                borderRadius: 18,
-              }}
-            >
+                   style={
+                     ({ width: "100%", height: "13%", marginTop: "12%" ,paddingLeft:'10%',paddingRight:'19%'}
+                     )
+                   }
+                 >
+                   <View
+                     style={{
+                       backgroundColor: "white",
+                       borderRadius: 18,
+                     }}
+                   >
               <View style={{ margin: "2%" }}>
                 <List>
                   <ListItem noBorder style={{ paddingBottom: "1%" }}>
@@ -275,6 +283,7 @@ export default class SearchScreen extends Component {
               </View>
             </View>
           </View>
+        </ScrollView>
         </View>
       );
     } else {
@@ -283,11 +292,20 @@ export default class SearchScreen extends Component {
           style={{
             flex: 1,
             backgroundColor: "#fbf7f0",
-//            justifyContent: "top",
+            justifyContent: "center",
             alignItems: "center",
+
           }}
         >
-          <Header style={{ backgroundColor: "white" }}>
+           <View
+                                                style={{
+                                                  width: 100 + "%",
+                                                  paddingTop:'6%',
+                                                  backgroundColor: "white",
+                                                  alignContent: "center",
+                                                  justifyContent: "center",
+                                                }}
+                                              >
             <SearchBar
               platform="ios"
               placeholder="Search Country"
@@ -298,13 +316,14 @@ export default class SearchScreen extends Component {
               value={search}
               onFocus={this.showCountrySearch}
             />
-          </Header>
+          </View>
           <View
             style={{
               width: "100%",
               height: "87%",
               backgroundColor: "transparent",
               alignContent: "center",
+              alignItems:'center',
               justifyContent: "center",
             }}
           >
@@ -312,12 +331,10 @@ export default class SearchScreen extends Component {
               name="search1"
               size={120}
               color="silver"
-              style={{ paddingLeft: "30%", marginBottom: "10%" }}
             ></IconAntDesign>
 
             <Text
               style={{
-                paddingLeft: "10%",
                 color: "silver",
                 fontSize: 15,
                 fontWeight: "bold",

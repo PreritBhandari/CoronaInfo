@@ -19,17 +19,18 @@ const styles = StyleSheet.create({
   },
   box: {
     width: "90%",
-    height: "56%",
+    height: "65%",
     padding: 8,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
       height: 7,
     },
+    flex: 1,
     shadowOpacity: 0.41,
     shadowRadius: 15,
 
-//     elevation: 14,
+    //     elevation: 14,
   },
 
   inner: {
@@ -64,7 +65,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.4,
     shadowRadius: 6,
 
-//     elevation: 14,
+    //     elevation: 14,
   },
 });
 
@@ -88,17 +89,20 @@ export default class Districts extends Component {
   }
 
   districtModel = (title) => {
-    this.setState({
-      districtInfoOpen: true,
+    // this.setState({});
 
-      districtName: title,
-    });
-
+    if (title == "Dhanusa") {
+      title = "Dhanusha";
+    }
+    //Dhanusa ko error bhako le
     return fetch(`https://data.nepalcorona.info/api/v1/districts/${title}`)
       .then((res) => res.json())
       .then((resJson) => {
         this.setState({
           districtDetail: resJson.covid_summary,
+          districtInfoOpen: true,
+
+          districtName: title,
         });
         console.log(this.state.districtDetail);
       })
@@ -123,10 +127,19 @@ export default class Districts extends Component {
         }}
       >
         <Container style={styles.container}>
-          <Header style={{ backgroundColor: "white" }}>
+          <View
+            style={{
+              width: 100 + "%",
+              height: 15 + "%",
+              backgroundColor: "white",
+              alignContent: "center",
+              justifyContent: "center",
+            }}
+          >
             <Text
               style={{
-                paddingTop: "7%",
+                marginLeft: 20 + "%",
+                marginTop: 6 + "%",
                 color: "purple",
                 fontWeight: "bold",
                 fontSize: 17,
@@ -134,7 +147,7 @@ export default class Districts extends Component {
             >
               See Covid-19 Info Of Your District
             </Text>
-          </Header>
+          </View>
           <Content>
             <Modal
               animationType="fade"
@@ -153,8 +166,8 @@ export default class Districts extends Component {
                   <View
                     style={{
                       backgroundColor: "#fbf7f0",
-                      marginTop: "19%",
-                      height: "78%",
+                      marginTop: "17%",
+                      height: "82%",
                       width: "100%",
                       justifyContent: "center",
                       alignItems: "center",
@@ -170,7 +183,7 @@ export default class Districts extends Component {
                         style={{
                           backgroundColor: "white",
                           borderRadius: 40,
-                          marginBottom: "10%",
+                          marginBottom: "5%",
                         }}
                       >
                         <View style={{ margin: "2%" }}>
@@ -275,8 +288,6 @@ export default class Districts extends Component {
                     >
                       <View
                         style={{
-                          backgroundColor: "white",
-                          borderRadius: 90,
                           marginTop: "5%",
                         }}
                       >
@@ -300,10 +311,11 @@ export default class Districts extends Component {
             <List>
               {this.state.districts.map((dis) => (
                 <ListItem borderBottomColor="black">
-                  <Button
+                  <TouchableOpacity
                     onPress={() => this.districtModel(dis.title)} // doesnt requires .bind while using arrow function
-                    title={dis.title}
-                  ></Button>
+                  >
+                    <Text style={{ color: "blue" }}> {dis.title}</Text>
+                  </TouchableOpacity>
                 </ListItem>
               ))}
             </List>
